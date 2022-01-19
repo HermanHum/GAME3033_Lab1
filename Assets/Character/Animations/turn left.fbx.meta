@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7ce99501d7f24534281b0399f6d88329
+guid: 24de3a617e02c2e45afc8fade7f050cb
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
@@ -497,58 +497,58 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Ch33_nonPBR(Clone)
+    - name: Joe(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch33_Shoes
-      parentName: Ch33_nonPBR(Clone)
+      parentName: Joe(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch33_Suit
-      parentName: Ch33_nonPBR(Clone)
+      parentName: Joe(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch33_Belt
-      parentName: Ch33_nonPBR(Clone)
+      parentName: Joe(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch33_Shirt
-      parentName: Ch33_nonPBR(Clone)
+      parentName: Joe(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch33_Tie
-      parentName: Ch33_nonPBR(Clone)
+      parentName: Joe(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch33_Pants
-      parentName: Ch33_nonPBR(Clone)
+      parentName: Joe(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch33_Body
-      parentName: Ch33_nonPBR(Clone)
+      parentName: Joe(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch33_Eyelashes
-      parentName: Ch33_nonPBR(Clone)
+      parentName: Joe(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch33_Hair
-      parentName: Ch33_nonPBR(Clone)
+      parentName: Joe(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig7:Hips
-      parentName: Ch33_nonPBR(Clone)
+      parentName: Joe(Clone)
       position: {x: -0, y: 0.99569464, z: 0.02560704}
       rotation: {x: -0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
