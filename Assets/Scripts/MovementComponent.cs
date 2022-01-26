@@ -64,6 +64,7 @@ public class MovementComponent : MonoBehaviour
     public void OnRun(InputValue value)
     {
         playerController.isRunning = value.isPressed;
+        playerAnimator.SetBool(isRunningHash, value.isPressed);
     }
 
     public void OnJump(InputValue value)
