@@ -14,9 +14,12 @@ public class WeaponHolder : MonoBehaviour
     [SerializeField]
     private Transform gripIKSocketLocation;
 
-    PlayerController playerController;
-    Animator playerAnimator;
+    private PlayerController playerController;
+    public PlayerController PlayerController { get { return playerController; } }
+    private Animator playerAnimator;
     private WeaponComponent equippedWeapon;
+
+    private bool firingPressed;
 
     public readonly int isFiringHash = Animator.StringToHash("isFiring");
     public readonly int isReloadingingHash = Animator.StringToHash("isReloading");
@@ -29,6 +32,7 @@ public class WeaponHolder : MonoBehaviour
         GameObject spawnedWeapon = Instantiate(weaponToSpawn, weaponSocketLocation);
 
         equippedWeapon = spawnedWeapon.GetComponent<WeaponComponent>();
+        equippedWeapon.Initialize(this);
         gripIKSocketLocation = equippedWeapon.GripLocation;
     }
 
@@ -60,7 +64,37 @@ public class WeaponHolder : MonoBehaviour
 
     public void OnFire(InputValue value)
     {
-        playerController.isFiring = value.isPressed;
-        playerAnimator.SetBool(isFiringHash, value.isPressed);
+        firingPressed = value.isPressed;
+        //playerController.isFiring = value.isPressed;
+        //playerAnimator.SetBool(isFiringHash, value.isPressed);
+        if (firingPressed)
+        {
+            StartFiring();
+        }
+        else
+        {
+            Stopfiring();
+        }
+    }
+
+    public void StartReloading()
+    {
+
+    }
+
+    private void StartFiring()
+    {
+        if (equippedWeapon.WeaponStats.bulletsInClip <= 0) return;
+
+        playerAnimator.SetBool(isFiringHash, true);
+        playerController.isFiring = true;
+        equippedWeapon.StartFiringWeapon();
+    }
+
+    private void Stopfiring()
+    {
+        equippedWeapon.StopFiringWeapon();
+        playerAnimator.SetBool(isFiringHash, false);
+        playerController.isFiring = false;
     }
 }
