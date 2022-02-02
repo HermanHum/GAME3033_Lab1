@@ -96,23 +96,6 @@ public class MovementComponent : MonoBehaviour
         // If we aim up, down, adjust animations to have a mask that will let us properly animate aim
     }
 
-    public void OnReload(InputValue value)
-    {
-        playerController.isReloading = value.isPressed;
-        playerAnimator.SetTrigger(isReloadingingHash);
-    }
-
-    public void OnAim(InputValue value)
-    {
-        playerController.isAiming = value.isPressed;
-    }
-
-    public void OnFire(InputValue value)
-    {
-        playerController.isFiring = value.isPressed;
-        playerAnimator.SetBool(isFiringHash, value.isPressed);
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.gameObject.CompareTag("Ground") || !playerController.isJumping) return;
