@@ -81,6 +81,7 @@ public class WeaponComponent : MonoBehaviour
         if (weaponStats.repeating)
         {
             //fire weapon
+            CancelInvoke(nameof(FireWeapon));
             InvokeRepeating(nameof(FireWeapon), weaponStats.fireStartDelay, weaponStats.fireRate);
         }
         else
@@ -107,8 +108,11 @@ public class WeaponComponent : MonoBehaviour
 
     public virtual void StartReloading()
     {
-        isReloading = true;
-        ReloadWeapon();
+        if (!isReloading)
+        {
+            isReloading = true;
+            ReloadWeapon();
+        }
     }
 
     public virtual void StopReloading()
