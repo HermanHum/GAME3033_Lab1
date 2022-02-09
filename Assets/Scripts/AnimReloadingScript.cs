@@ -21,7 +21,7 @@ public class AnimReloadingScript : StateMachineBehaviour
     {
         if (stateInfo.IsName("Reloading"))
         {
-            animator.GetComponent<PlayerController>().isReloading = false;
+            animator.GetComponent<WeaponHolder>().StopReloading();
         }
     }
 
