@@ -32,6 +32,7 @@ public class MovementComponent : MonoBehaviour
     public readonly int movementYHash = Animator.StringToHash("MovementY");
     public readonly int isRunningHash = Animator.StringToHash("isRunning");
     public readonly int isJumpingHash = Animator.StringToHash("isJumping");
+    public readonly int verticalAimHash = Animator.StringToHash("VerticalAim");
     //public readonly int isFiringHash = Animator.StringToHash("isFiring");
     //public readonly int isReloadingingHash = Animator.StringToHash("isReloading");
 
@@ -68,6 +69,7 @@ public class MovementComponent : MonoBehaviour
 
         playerAnimator.SetFloat(movementXHash, inputVector.x, 1, 0.1f);
         playerAnimator.SetFloat(movementYHash, inputVector.y, 1, 0.1f);
+        playerAnimator.SetFloat(verticalAimHash, rotationVector.x * 0.0125f, 1, 0.1f);
     }
 
     public void OnMovement(InputValue value)
