@@ -96,11 +96,37 @@ public class MovementComponent : MonoBehaviour
         // If we aim up, down, adjust animations to have a mask that will let us properly animate aim
     }
 
+    private bool IsGroundCollision(ContactPoint[] contacts)
+    {
+        for (int i = 0; i < contacts.Length; i++)
+        {
+            if (1 - contacts[i].normal.y < 0.1f)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.gameObject.CompareTag("Ground") || !playerController.isJumping) return;
 
-        playerController.isJumping = false;
-        playerAnimator.SetBool(isJumpingHash, false);
+        if (IsGroundCollision(collision.contacts))
+        {
+            playerController.isJumping = false;
+            playerAnimator.SetBool(isJumpingHash, false);
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (!collision.gameObject.CompareTag("Ground") || !playerController.isJumping || rigidBody.velocity.y > 0) return;
+
+        if (IsGroundCollision(collision.contacts))
+        {
+            playerController.isJumping = false;
+            playerAnimator.SetBool(isJumpingHash, false);
+        }
     }
 }
