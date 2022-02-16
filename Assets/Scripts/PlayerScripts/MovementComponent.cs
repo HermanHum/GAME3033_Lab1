@@ -43,6 +43,14 @@ public class MovementComponent : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
     }
 
+    private void Start()
+    {
+        if (!GameManager.instance.cursorActive)
+        {
+            AppEvents.InvokeMouseCursorEnable(false);
+        }
+    }
+
     // Update is called once per frame
     private void Update()
     {
