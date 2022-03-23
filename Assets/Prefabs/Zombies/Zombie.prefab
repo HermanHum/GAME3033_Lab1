@@ -3294,6 +3294,8 @@ GameObject:
   - component: {fileID: 4230116841203378588}
   - component: {fileID: 1087913004}
   - component: {fileID: 1087913005}
+  - component: {fileID: 1243738482535149929}
+  - component: {fileID: 116175889822755375}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -3404,7 +3406,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.85
-  m_BaseOffset: 0
+  m_BaseOffset: -0.15
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &1087913004
@@ -3431,8 +3433,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fbbfb346065049bed03dd833927f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieDamage: 5
+  zombieDamage: 15
   followTarget: {fileID: 0}
+--- !u!114 &1243738482535149929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418193975600942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e0a6ab3601c1d34e8a13ecb5358aa85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100
+--- !u!136 &116175889822755375
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418193975600942}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.85
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.925, z: 0}
 --- !u!1 &1423411692011380
 GameObject:
   m_ObjectHideFlags: 0

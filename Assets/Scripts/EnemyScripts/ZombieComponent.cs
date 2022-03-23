@@ -15,7 +15,6 @@ public class ZombieComponent : MonoBehaviour
     public Animator Animator => animator;
     private ZombieStateMachine zombieStateMachine;
     public ZombieStateMachine ZombieStateMachine => zombieStateMachine;
-    [SerializeField]
     private GameObject followTarget;
 
     private void Awake()
@@ -23,6 +22,11 @@ public class ZombieComponent : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         zombieStateMachine = GetComponent<ZombieStateMachine>();
+    }
+
+    private void Start()
+    {
+        followTarget = GameObject.FindGameObjectWithTag("Player");
         Initialize();
     }
 

@@ -41,7 +41,7 @@ public class ZombieStateMachine : MonoBehaviour
 
         if (currentState.UpdateInterval >= 0)
         {
-            InvokeRepeating(nameof(IntervalUpdate), 0, currentState.UpdateInterval);
+            InvokeRepeating(nameof(IntervalUpdate), 1f, currentState.UpdateInterval);
         }
         isRunning = true;
     }

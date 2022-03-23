@@ -7,12 +7,15 @@ public class ZombieAttackState : ZombieState
     GameObject followTarget;
     float attackRange = 2;
 
+    private IDamageable damageableObject;
+
     public ZombieAttackState(GameObject _followTarget, ZombieComponent zombie, ZombieStateMachine stateMachine) : base(zombie, stateMachine)
     {
         followTarget = _followTarget;
-        UpdateInterval = 2f;
+        UpdateInterval = 2.63333333f;
 
         // Set damageable object here, ADD LATER
+        damageableObject = followTarget.GetComponent<IDamageable>();
     }
 
     public override void Start()
@@ -27,6 +30,7 @@ public class ZombieAttackState : ZombieState
     {
         base.IntervalUpdate();
         // Deal damage every interval
+        damageableObject?.TakeDamage(ownerZombie.ZombieDamage);
     }
 
     public override void Update()
