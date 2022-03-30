@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d114fcfb4dbd67d4facc1e4defff996e, type: 3}
+  m_Name: HealthPotion
+  m_EditorClassIdentifier: 
+  itemCategory: 2
+  itemName: Health Potion
+  itemPrefab: {fileID: 8619585388037976870, guid: 1dc732c82399af1418099277ed6316aa, type: 3}
+  stackable: 1
+  maxSize: 30
+  amountValue: 1
+  effect: 60
