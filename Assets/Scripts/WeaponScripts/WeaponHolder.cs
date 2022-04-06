@@ -13,11 +13,14 @@ public class WeaponHolder : MonoBehaviour
     private Transform weaponSocketLocation;
     [SerializeField]
     private Transform gripIKSocketLocation;
+    [SerializeField]
+    private GameObject spawnedWeapon;
 
     private PlayerController playerController;
     public PlayerController PlayerController { get { return playerController; } }
     private Animator playerAnimator;
     private WeaponComponent equippedWeapon;
+    public WeaponComponent EquippedWeapon { get { return equippedWeapon; } set { equippedWeapon = value; } }
 
     private bool firingPressed;
 
@@ -29,22 +32,17 @@ public class WeaponHolder : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
         playerAnimator = GetComponent<Animator>();
-        GameObject spawnedWeapon = Instantiate(weaponToSpawn, weaponSocketLocation);
 
-        equippedWeapon = spawnedWeapon.GetComponent<WeaponComponent>();
-        equippedWeapon.Initialize(this);
-        PlayerEvents.InvokeOnWeaponEquipped(equippedWeapon);
-        gripIKSocketLocation = equippedWeapon.GripLocation;
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        
+        //spawnedWeapon = Instantiate(weaponToSpawn, weaponSocketLocation);
+        //equippedWeapon = spawnedWeapon.GetComponent<WeaponComponent>();
+        //equippedWeapon.Initialize(this);
+        //PlayerEvents.InvokeOnWeaponEquipped(equippedWeapon);
+        //gripIKSocketLocation = equippedWeapon.GripLocation;
     }
 
     private void OnAnimatorIK(int layerIndex)
     {
+        if (!gripIKSocketLocation) return;
         if (!playerController.isReloading)
         {
             playerAnimator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
@@ -54,6 +52,7 @@ public class WeaponHolder : MonoBehaviour
 
     public void OnReload(InputValue value)
     {
+        if (!equippedWeapon || playerController.inInventory) return;
         playerController.isReloading = value.isPressed;
         StartReloading();
     }
@@ -89,11 +88,13 @@ public class WeaponHolder : MonoBehaviour
 
     public void OnAim(InputValue value)
     {
+        if (playerController.inInventory) return;
         playerController.isAiming = value.isPressed;
     }
 
     public void OnFire(InputValue value)
     {
+        if (!equippedWeapon || playerController.inInventory) return;
         firingPressed = value.isPressed;
         //playerController.isFiring = value.isPressed;
         //playerAnimator.SetBool(isFiringHash, value.isPressed);
@@ -125,5 +126,28 @@ public class WeaponHolder : MonoBehaviour
         equippedWeapon.StopFiringWeapon();
         playerAnimator.SetBool(isFiringHash, false);
         playerController.isFiring = false;
+    }
+
+    public void EquipWeapon(WeaponScriptable weaponScriptable)
+    {
+        if (!weaponScriptable) return;
+
+        spawnedWeapon = Instantiate(weaponScriptable.itemPrefab, weaponSocketLocation);
+        if (!spawnedWeapon) return;
+
+        UnEquipWeapon();
+
+        equippedWeapon = spawnedWeapon.GetComponent<WeaponComponent>();
+        equippedWeapon.Initialize(this, weaponScriptable);
+        PlayerEvents.InvokeOnWeaponEquipped(equippedWeapon);
+        gripIKSocketLocation = equippedWeapon.GripLocation;
+    }
+
+    public void UnEquipWeapon()
+    {
+        if (!equippedWeapon) return;
+        Destroy(equippedWeapon.gameObject);
+        equippedWeapon = null;
+        PlayerEvents.InvokeOnWeaponEquipped(equippedWeapon);
     }
 }

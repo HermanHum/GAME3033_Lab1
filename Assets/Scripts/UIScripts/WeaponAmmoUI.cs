@@ -14,12 +14,13 @@ public class WeaponAmmoUI : MonoBehaviour
     [SerializeField]
     WeaponComponent weaponComponent;
 
-    private void OnEnable()
+    private void Start()
     {
         PlayerEvents.OnWeaponEquipped += OnWeaponEquipped;
+        OnWeaponEquipped(null);
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         PlayerEvents.OnWeaponEquipped -= OnWeaponEquipped;
     }
@@ -36,7 +37,16 @@ public class WeaponAmmoUI : MonoBehaviour
 
     private void OnWeaponEquipped(WeaponComponent _weaponComponent)
     {
-        weaponComponent = _weaponComponent;
-        weaponNameText.text = weaponComponent.WeaponStats.weaponName;
+        if (_weaponComponent)
+        {
+            weaponComponent = _weaponComponent;
+            weaponNameText.text = weaponComponent.WeaponStats.weaponName;
+        }
+        else
+        {
+            weaponNameText.text = "";
+            currentBulletCountText.text = "0";
+            totalBulletCountText.text = "0";
+        }
     }
 }

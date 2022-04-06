@@ -20,6 +20,15 @@ public class HealthComponent : MonoBehaviour, IDamageable
         }
     }
 
+    public virtual void Heal(float amount)
+    {
+        currentHealth += amount;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+    }
+
     public virtual void Destroy()
     {
         Destroy(gameObject);

@@ -10,7 +10,10 @@ public class ConsumableScriptable : ItemScriptable
     public override void UseItem(PlayerController playerController)
     {
         // Check to see if the player is at max health, then return
+        HealthComponent healthComponent = playerController.GetComponent<HealthComponent>();
+        if (healthComponent.CurrentHealth >= healthComponent.MaxHealth) return;
         // Heal player with potion
+        healthComponent.Heal(effect);
 
         ChangeAmount(-1);
 

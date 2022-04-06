@@ -12,6 +12,6 @@ public abstract class EquippableScriptable : ItemScriptable
 
     public override void UseItem(PlayerController playerController)
     {
-        isEquipped = !isEquipped;
+        Equipped = !isEquipped;
     }
 }

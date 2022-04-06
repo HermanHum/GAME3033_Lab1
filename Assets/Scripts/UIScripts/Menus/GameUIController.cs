@@ -30,6 +30,7 @@ public class GameUIController : MonoBehaviour
 
         ActiveWidget = GameCanvas;
         ActiveWidget.EnableWidget();
+        AppEvents.InvokeMouseCursorEnable(false);
     }
 
     public void EnableInventoryMenu()
@@ -38,6 +39,8 @@ public class GameUIController : MonoBehaviour
 
         ActiveWidget = InventoryCanvas;
         ActiveWidget.EnableWidget();
+
+        AppEvents.InvokeMouseCursorEnable(true);
     }
 
     public void DisableAllMenus()

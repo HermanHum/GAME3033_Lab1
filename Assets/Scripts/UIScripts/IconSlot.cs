@@ -24,7 +24,7 @@ public class IconSlot : MonoBehaviour
     public void Initialize(ItemScriptable item)
     {
         Item = item;
-        ItemText.text = Item.name;
+        ItemText.text = Item.itemName;
         AmountWidget.Initialize(item);
         EquippedWidget.Initialize(item);
 
@@ -34,7 +34,7 @@ public class IconSlot : MonoBehaviour
 
     public void UseItem()
     {
-        Debug.Log($"{Item.name} used!");
+        Debug.Log($"{Item.itemName} used!");
         Item.UseItem(Item.Controller);
     }
 

@@ -102,7 +102,14 @@ public class MovementComponent : MonoBehaviour
 
     public void OnLook(InputValue value)
     {
-        lookInput = value.Get<Vector2>();
+        if (!playerController.inInventory)
+        {
+            lookInput = value.Get<Vector2>();
+        }
+        else
+        {
+            lookInput = Vector2.zero;
+        }
         // If we aim up, down, adjust animations to have a mask that will let us properly animate aim
     }
 

@@ -58,21 +58,10 @@ public class WeaponComponent : MonoBehaviour
         mainCamera = Camera.main;
     }
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        
-    }
-
-    public void Initialize(WeaponHolder _weaponHolder)
+    public void Initialize(WeaponHolder _weaponHolder, WeaponScriptable weaponScriptable)
     {
         weaponHolder = _weaponHolder;
+        weaponStats = weaponScriptable.weaponStats;
     }
 
     public virtual void StartFiringWeapon()
